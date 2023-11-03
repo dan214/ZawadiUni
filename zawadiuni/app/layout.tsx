@@ -34,7 +34,7 @@ export default function RootLayout({
         <Container fluid>
           <Row className="justify-content-md-center">
             <LeftSection />
-            <Col>
+            <Col xs lg="10">
               <NavBar />
               {children}</Col>
           </Row>

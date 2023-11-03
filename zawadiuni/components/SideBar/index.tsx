@@ -20,7 +20,7 @@ const SideBar = () => {
                     className="d-flex"
                     href={url}>
                     {icon}
-                    <div>{displayText}</div>
+                    {displayText}
                 </Link>
             </Nav.Item>
         );
