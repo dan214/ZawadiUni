@@ -2,6 +2,7 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import './sidebar.scss';
+import Link from 'next/link'
 
 import DashboardIcon from '../icons/Dashboard';
 import TaskIcon from '../icons/TasksIcon';
@@ -11,45 +12,53 @@ import CalendarIcon from '../icons/CalendarIcon';
 
 const SideBar = () => {
 
-    const MeNuItem = (props: { displayText: any, icon: JSX.Element }) => {
-        const { displayText, icon } = props;
+    const MeNuItem = (props: { displayText: any, icon: JSX.Element, url: string }) => {
+        const { displayText, icon, url } = props;
         return (
             <Nav.Item className='nav-item-flex'>
-                <Nav.Link
-                    className="d-flex">
+                <Link
+                    className="d-flex"
+                    href={url}>
                     {icon}
                     <div>{displayText}</div>
-                </Nav.Link>
+                </Link>
             </Nav.Item>
         );
     };
 
     return (
         <div className="sidebar is-open">
-            <div
-                className="sidebar-header d-flex p-2 justify-content-between align-items-center">
-                <p>Zawadi Uni</p>
-            </div>
+            <Link href="/">
+                <div
+                    className="sidebar-header d-flex p-2 justify-content-between align-items-center">
+                    <p>Zawadi Uni</p>
+                </div>
+            </Link>
             <div className="side-menu">
                 <Nav className='navMainItem'>
                     <MeNuItem
                         displayText="Dashboard"
+                        url="/dashboard"
                         icon={<DashboardIcon />}
                     />
                     <MeNuItem
-                        displayText="Test Cases"
+                        displayText="Courses"
+                        url="/courses"
                         icon={<TaskIcon />}
                     />
                     <MeNuItem
-                        displayText="Test Plans"
+                        displayText="Students"
+                        url="/students"
                         icon={<TestIcon />}
                     />
                     <MeNuItem
-                        displayText="Scheduled"
+                        displayText="Examinations"
+                        url="/examinations"
                         icon={<ScheduledIcon />}
                     />
                     <MeNuItem
                         displayText="Calendar"
+                        url="/calendar"
                         icon={<CalendarIcon />}
                     />
                 </Nav>
