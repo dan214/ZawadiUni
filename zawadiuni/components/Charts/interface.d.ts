@@ -12,7 +12,9 @@ export interface CardChartData {
   dataDate: string;
 }
 
-export interface PieChartProps extends PieProps {}
+export interface PieChartProps {
+  data: Array<PieChartValue>;
+}
 
 export interface PieChartValue {}
 

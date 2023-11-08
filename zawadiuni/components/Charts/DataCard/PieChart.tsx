@@ -27,7 +27,7 @@ const StabilityPieChart: React.FC<PieChartProps> = (props) => {
         fill="white"
         textAnchor={x > cx ? 'start' : 'end'}
         dominantBaseline="central"
-        aria-label={`${(percent * 100).toFixed(0)}% ${data[index].name}`}
+        aria-label={`${(percent * 100).toFixed(0)}%`}
         tabIndex={0}
       >
         {`${(percent * 100).toFixed(0)}%`}
