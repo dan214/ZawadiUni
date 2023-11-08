@@ -1,0 +1,15 @@
+.card-overlay {
+    background-color: #ffffff59;
+    color: #ffffff;
+    .card {
+        p {
+            font-weight: 500;
+            font-size: 28px;
+            align-self: center;
+            top: 40%;
+        }
+    }
+    p.card-text {
+        position: absolute;
+    }
+}
