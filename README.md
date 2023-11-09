@@ -1,3 +1,3 @@
 # ZawadiUni
 
-https://zawadi-uni.vercel.app/
+[https://zawadiuni.vercel.app/](https://zawadiuni.vercel.app/)
