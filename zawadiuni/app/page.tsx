@@ -73,7 +73,7 @@ export default async function Home() {
 }
 
 
-export async function getData() {
+async function getData() {
 
   const suffixUrl = `/course`;
   const courses = await axiosApi.getData(suffixUrl);
