@@ -7,14 +7,8 @@ class Axios {
     configurations?: { [key: string]: any }
   ) {
     console.log("enetede");
-    const https = require("https");
-    const fs = require("fs");
-    const agent = new https.Agent({
-      cert: fs.readFileSync("./certificates/localhost.pem"),
-      key: fs.readFileSync("./certificates/localhost-key.pem"),
-    });
     const apiUrl: string = "https://localhost:7250/" + apiSuffix;
-    const { data, status } = await axios.get(apiUrl, agent);
+    const { data, status } = await axios.get(apiUrl);
     return { data, status };
   }
 }
