@@ -86,7 +86,7 @@ const DashboardCoursesCard: React.FC<DashboardCoursesProps> = (props) => {
                         size="md">
                         <Link
                             className="button-link"
-                            href="/students">
+                            href="/courses">
                             View all courses
                         </Link>
                     </Button>

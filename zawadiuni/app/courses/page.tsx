@@ -1,3 +1,11 @@
+import TopCard from "@/components/TopCard";
+
 export default function Page() {
-    return <h1>Hello, Courses Page! Coming soon</h1>
+    return (
+        <><TopCard cardTitle="Courses"
+            cardSubtitle="Courses"
+            cardText="Please review the courses here below" />
+        </>
+
+    );
 }
