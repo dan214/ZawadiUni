@@ -1,1 +1,1 @@
-export interface DashboardCoursesProps {}
+export interface DashboardStudentsProps {}
