@@ -1,3 +1,12 @@
+import TopCard from "@/components/TopCard";
+
 export default function Page() {
-    return <h1>Hello, Calendar Page! Coming soon</h1>
+    return (
+        <><TopCard
+            cardTitle="Calendar"
+            cardSubtitle="Calendar"
+            cardText="Please review the calendar here below" />
+        </>
+
+    );
 }

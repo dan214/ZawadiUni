@@ -3,45 +3,22 @@ import { Row } from 'react-bootstrap';
 import { Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Table } from 'reactstrap';
 import DashboardStudentsCard from '@/components/Students/DashboardStudentsCard';
 import DashboardCoursesCard from '@/components/Courses/DashboardCoursesCard';
+import TopCard from '@/components/TopCard';
 
 
 export default async function Home() {
   return (
     <>
-      <Row className="mb-3 mt-3"><Col md={{
-        size: 12
-      }} sm={{
-        size: 12
-      }} lg={{
-        size: 12
-      }}>
-        <Card>
-          <CardBody>
-            <CardTitle tag="h1">
-              <b>Zawadi University</b>
-            </CardTitle>
-            <CardSubtitle
-              className="mb-2 text-muted"
-              tag="h6"
-            >
-              Dashboard
-            </CardSubtitle>
-            <CardText>
-              Please review below data on Zawadi University
-            </CardText>
-          </CardBody>
-        </Card></Col>
-      </Row>
+      <TopCard cardTitle="Zawadi University"
+        cardSubtitle="Zawadi University"
+        cardText="Please review the data here below" />
+
       <Row className="mb-3 mt-3">
-        <Col xl={3} lg={12} md={12} sm={12} xs={24}>
-        </Col>
-      </Row>
-      <Row>
         <DashboardStudentsCard />
         <DashboardCoursesCard />
-
       </Row>
-      <Row><Col md={{
+
+      <Row className="mb-3 mt-3"><Col md={{
         size: 5
       }} sm={{
         size: 5
