@@ -3,7 +3,6 @@ import { PieProps } from "recharts";
 export interface DataCardProps {
   cardTitle: string;
   cardValue: string;
-  chartData?: Array<CardChartData>;
   styles?: { [key: string]: any };
 }
 
