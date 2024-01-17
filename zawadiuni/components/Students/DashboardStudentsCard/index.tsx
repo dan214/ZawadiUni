@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, CardText, CardTitle, Col, Table } from "reactstrap";
 import { DashboardStudentsProps } from "../interface";
 import Link from "next/link";
-import { getAllCourses } from '@/actions/courseActions';
 
 
 const DashboardStudentsCard: React.FC<DashboardStudentsProps> = () => {

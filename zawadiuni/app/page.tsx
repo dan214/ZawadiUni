@@ -16,7 +16,15 @@ export default function Home() {
 
       <Row className="mb-3 mt-3">
         <DashboardStudentsCard />
+        <Col md={{
+            size: 10
+        }} sm={{
+            size: 12
+        }} lg={{
+            size: 6
+        }}>
         <DashboardCoursesCard />
+        </Col>
       </Row>
 
       <Row className="mb-3 mt-3"><Col md={{
