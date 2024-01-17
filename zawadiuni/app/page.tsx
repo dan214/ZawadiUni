@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import { Row } from 'react-bootstrap';
 import { Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Table } from 'reactstrap';
@@ -6,7 +7,7 @@ import DashboardCoursesCard from '@/components/Courses/DashboardCoursesCard';
 import TopCard from '@/components/TopCard';
 
 
-export default async function Home() {
+export default function Home() {
   return (
     <>
       <TopCard cardTitle="Zawadi University"
