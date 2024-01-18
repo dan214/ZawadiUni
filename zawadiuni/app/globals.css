@@ -35,3 +35,7 @@ body {
 .main-page {
   background-color: #dce6ef;
 }
+
+.buttons-icons {
+  display: inline-flex;
+}

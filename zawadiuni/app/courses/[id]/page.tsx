@@ -1,6 +1,8 @@
 "use client"
 import { Course } from "@/app/interface";
 import TopCard from "@/components/TopCard";
+import DeleteIcon from "@/components/icons/DeleteIcon";
+import EditIcon from "@/components/icons/EditIcon";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
@@ -51,12 +53,12 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                         }} sm={{
                             size: 1
                         }} lg={{
-                            offset: 5,
-                            size: 2
+                            offset: 4,
+                            size: 4
                         }}>
-                            <Button color="primary" size="md">Edit</Button>
+                            <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit course</Button>
                             {' '}
-                            <Button color="danger" size="md">Delete</Button>
+                            <Button className="buttons-icons" color="danger" size="md">{<DeleteIcon />}Delete course</Button>
                         </Col>
 
                     </Row>
