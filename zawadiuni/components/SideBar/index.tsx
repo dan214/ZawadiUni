@@ -1,6 +1,5 @@
 "use client"
 import React from 'react';
-import { Nav } from 'react-bootstrap';
 import './sidebar.scss';
 import Link from 'next/link'
 
@@ -9,20 +8,21 @@ import TaskIcon from '../icons/TasksIcon';
 import TestIcon from '../icons/testIcon';
 import ScheduledIcon from '../icons/ScheduledIcon';
 import CalendarIcon from '../icons/CalendarIcon';
+import { Nav, NavItem } from 'reactstrap';
 
 const SideBar = () => {
 
-    const MeNuItem = (props: { displayText: any, icon: JSX.Element, url: string }) => {
+    const MenuItem = (props: { displayText: any, icon: JSX.Element, url: string }) => {
         const { displayText, icon, url } = props;
         return (
-            <Nav.Item className='nav-item-flex'>
+            <NavItem className='nav-item-flex'>
                 <Link
                     className="d-flex"
                     href={url}>
                     {icon}
                     {displayText}
                 </Link>
-            </Nav.Item>
+            </NavItem>
         );
     };
 
@@ -36,27 +36,27 @@ const SideBar = () => {
             </Link>
             <div className="side-menu">
                 <Nav className='navMainItem'>
-                    <MeNuItem
+                    <MenuItem
                         displayText="Dashboard"
                         url="/dashboard"
                         icon={<DashboardIcon />}
                     />
-                    <MeNuItem
+                    <MenuItem
                         displayText="Courses"
                         url="/courses"
                         icon={<TaskIcon />}
                     />
-                    <MeNuItem
+                    <MenuItem
                         displayText="Students"
                         url="/students"
                         icon={<TestIcon />}
                     />
-                    <MeNuItem
+                    <MenuItem
                         displayText="Examinations"
                         url="/examinations"
                         icon={<ScheduledIcon />}
                     />
-                    <MeNuItem
+                    <MenuItem
                         displayText="Calendar"
                         url="/calendar"
                         icon={<CalendarIcon />}

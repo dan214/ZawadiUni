@@ -1,26 +1,39 @@
 "use client"
-import Container from 'react-bootstrap/Container';
-import { Nav, Navbar } from 'react-bootstrap';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Row from 'react-bootstrap/Row';
+import { Col, Dropdown, DropdownItem, DropdownMenu, Nav, NavItem, NavLink, Row } from "reactstrap";
 import "./navbar.scss";
 
 const NavBar = () => {
   return (
-    <Row>
-
-      <Nav className="justify-content-right topbar static-top shadow"
-        activeKey="/home"
-        onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
-      >
-        <NavDropdown className="navitem" title="Dropdown" id="nav-dropdown">
-          <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
+    <Row className="mb-3 mt-3">
+      <Col md={{
+        size: 10
+      }} sm={{
+        size: 12
+      }} lg={{
+        size: 12
+      }}>
+        <Nav className="justify-content-right topbar static-top shadow">
+          <NavItem>
+            <NavLink
+              active
+              href="/departments"
+            >
+              Departments
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/courses">
+              Courses
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="/examinations"
+            >
+              Examinations
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Col>
     </Row>
   );
 };

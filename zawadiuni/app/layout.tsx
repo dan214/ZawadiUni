@@ -3,10 +3,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from '../components/navbar';
 import SideBar from '@/components/SideBar';
-import './globals.css'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import './globals.css';
+import { Col, Container, Row } from 'reactstrap';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,7 +30,7 @@ export default function RootLayout({
 
       <body className={inter.className}>
         <Container fluid>
-          <Row className="justify-content-md-center">
+          <Row className="justify-content-md-center main-page">
             <LeftSection />
             <Col xs lg="10">
               <NavBar />
