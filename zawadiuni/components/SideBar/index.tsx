@@ -37,8 +37,8 @@ const SideBar = () => {
             <div className="side-menu">
                 <Nav className='navMainItem'>
                     <MenuItem
-                        displayText="Dashboard"
-                        url="/dashboard"
+                        displayText="Departments"
+                        url="/departments"
                         icon={<DashboardIcon />}
                     />
                     <MenuItem
@@ -47,7 +47,7 @@ const SideBar = () => {
                         icon={<TaskIcon />}
                     />
                     <MenuItem
-                        displayText="Students"
+                        displayText="Departments"
                         url="/students"
                         icon={<TestIcon />}
                     />

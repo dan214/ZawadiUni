@@ -69,7 +69,10 @@ export interface TestPassReleaseTrends {
 }
 
 export interface Batch {
-
+  batchId: number;
+  batchName: string;
+  description: string;
+  dateCreated: Date;
 }
 
 export interface Course {
@@ -78,5 +81,4 @@ export interface Course {
   courseName: string;
   description: string;
   dateCreated: Date;
-
 }

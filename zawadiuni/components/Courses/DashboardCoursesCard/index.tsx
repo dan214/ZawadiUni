@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card, CardText, CardTitle, Col, Table } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardHeader, CardText, CardTitle, Col, Table } from "reactstrap";
 import { DashboardCoursesProps } from "../interface";
 import Link from "next/link";
 import { Course } from '@/app/interface';
@@ -38,7 +38,11 @@ const DashboardCoursesCard: React.FC<DashboardCoursesProps> = (props) => {
                                 {data.courseId}
                             </th>
                             <td>
-                                {data.courseName}
+                                <Link
+                                    className="button-link"
+                                    href="/courses">
+                                    {data.courseName}
+                                </Link>
                             </td>
                             <td>
                                 {data.description}
@@ -56,42 +60,44 @@ const DashboardCoursesCard: React.FC<DashboardCoursesProps> = (props) => {
 
     return (
 
-        <Card body>
-            <CardTitle tag="h1">
+        <Card>
+            <CardHeader tag="h1">
                 <b>Courses</b>
-            </CardTitle>
-            <CardText>
-                <Table striped>
-                    <thead>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>
-                                Course Name
-                            </th>
-                            <th>
-                                Description
-                            </th>
-                            <th>
-                                Date Created
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>{renderTableRows(courses)}
-                    </tbody>
-                </Table>
-            </CardText>
-            <Col sm="8" md="8" lg="4">
+            </CardHeader>
+            <CardBody>
+                <CardText>
+                    <Table striped>
+                        <thead>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    Course Name
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Date Created
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>{renderTableRows(courses)}
+                        </tbody>
+                    </Table>
+                </CardText>
+            </CardBody>
+            <CardFooter>
                 <Button color="primary"
-                    size="md">
+                    size="sm">
                     <Link
                         className="button-link"
                         href="/courses">
                         View all courses
                     </Link>
                 </Button>
-            </Col>
+            </CardFooter>
         </Card>
     );
 };

@@ -1,20 +1,19 @@
 "use client"
 import TopCard from "@/components/TopCard";
+import { Batch, Course } from "../interface";
+import { useEffect, useState } from "react";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Table } from "reactstrap";
-import { Course } from "../interface";
+import { Button, Row, Col, Card, Table } from "reactstrap";
 
 export default function Page() {
-
-    const [courses, setCourses] = useState(Array<Course>);
+    const [departments, setDepartments] = useState(Array<Batch>);
 
     useEffect(() => {
         try {
-            axiosApi.getAllData("course").then((response) => {
-                setCourses(response.data);
+            axiosApi.getAllData("batch").then((response) => {
+                setDepartments(response.data);
             });
         }
         catch (error) {
@@ -23,17 +22,17 @@ export default function Page() {
 
     }, []);
 
-    const renderTableRows = (tableData: Array<Course>) => {
+    const renderTableRows = (tableData: Array<Batch>) => {
         return (
             <>
                 {tableData.map((data, index) => {
                     return (
-                        <tr key={data.courseId}>
+                        <tr key={data.batchId}>
                             <th scope="row">
-                                {data.courseId}
+                                {data.batchId}
                             </th>
                             <td>
-                                {data.courseName}
+                                {data.batchName}
                             </td>
                             <td>
                                 {data.description}
@@ -46,7 +45,7 @@ export default function Page() {
                                     size="sm">
                                     <Link
                                         className="button-link"
-                                        href={`/courses/${data.courseId}`}>
+                                        href={`/departments/${data.batchId}`}>
                                         View
                                     </Link>
                                 </Button>
@@ -93,7 +92,7 @@ export default function Page() {
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>{renderTableRows(courses)}
+                            <tbody>{renderTableRows(departments)}
                             </tbody>
                         </Table>
                     </Card>
