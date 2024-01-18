@@ -78,9 +78,6 @@ export default function Page() {
                     size: 12
                 }}>
                     <Card body>
-                        <CardTitle tag="h1">
-                            <b>Courses</b>
-                        </CardTitle>
                         <Table striped>
                             <thead>
                                 <tr>

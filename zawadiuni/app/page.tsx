@@ -1,7 +1,6 @@
 "use client"
 import React from 'react';
-import { Row } from 'react-bootstrap';
-import { Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Table } from 'reactstrap';
+import { Card, CardBody, CardSubtitle, CardText, CardTitle, Col, Row, Table } from 'reactstrap';
 import DashboardStudentsCard from '@/components/Students/DashboardStudentsCard';
 import DashboardCoursesCard from '@/components/Courses/DashboardCoursesCard';
 import TopCard from '@/components/TopCard';
@@ -17,13 +16,13 @@ export default function Home() {
       <Row className="mb-3 mt-3">
         <DashboardStudentsCard />
         <Col md={{
-            size: 10
+          size: 10
         }} sm={{
-            size: 12
+          size: 12
         }} lg={{
-            size: 6
+          size: 6
         }}>
-        <DashboardCoursesCard />
+          <DashboardCoursesCard />
         </Col>
       </Row>
 
