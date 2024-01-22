@@ -19,3 +19,10 @@
 .buttons-icons {
   display: inline-flex;
 }
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  color: #000000;
+}

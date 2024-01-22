@@ -89,8 +89,8 @@ const DashboardCoursesCard: React.FC<DashboardCoursesProps> = (props) => {
                 </CardText>
             </CardBody>
             <CardFooter>
-                <Button color="primary"
-                    size="sm">
+                <Button type="button" color="primary"
+                    size="md">
                     <Link
                         className="button-link"
                         href="/courses">

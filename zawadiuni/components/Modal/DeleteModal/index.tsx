@@ -32,28 +32,29 @@ const DeleteModal: React.FC<DeleteModalProps> = (props) => {
     };
 
     return (
-        <><Button type value="Submit" className="buttons-icons" color="danger" size="md" onClick={toggle}>{<DeleteIcon />}{deleteText}</Button><Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>{deleteTitle}</ModalHeader>
-            <ModalBody>
-                {deleteDescription}
-            </ModalBody>
-            <ModalFooter>
-                <Button type color="primary" disabled={loading} onClick={handleDelete}>
-                    {deleteText}
-                </Button>{' '}
-                {loading && (
-                    <Spinner
-                        className="m-5"
-                        color="primary"
-                    >
-                        Loading...
-                    </Spinner>
-                )}
-                <Button type color="secondary" onClick={toggle}>
-                    Cancel
-                </Button>
-            </ModalFooter>
-        </Modal>
+        <><Button type="submit" value="Submit" className="buttons-icons" color="danger" size="md" onClick={toggle}>{<DeleteIcon />}{deleteText}</Button>
+            <Modal isOpen={modal} toggle={toggle}>
+                <ModalHeader toggle={toggle}>{deleteTitle}</ModalHeader>
+                <ModalBody>
+                    {deleteDescription}
+                </ModalBody>
+                <ModalFooter>
+                    <Button type="submit" color="danger" disabled={loading} onClick={handleDelete}>
+                        {deleteText}
+                    </Button>{' '}
+                    {loading && (
+                        <Spinner
+                            className="m-5"
+                            color="primary"
+                        >
+                            Loading...
+                        </Spinner>
+                    )}
+                    <Button type="submit" color="secondary" onClick={toggle}>
+                        Cancel
+                    </Button>
+                </ModalFooter>
+            </Modal>
         </>
     );
 }

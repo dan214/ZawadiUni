@@ -4,9 +4,10 @@ import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Table } from "reactstrap";
+import { Button, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
 import { Course } from "../interface";
 import ViewIcon from "@/components/icons/ViewIcon";
+import AddCourseModal from "@/components/Modal/AddCourseModal";
 
 export default function Page() {
 
@@ -43,7 +44,7 @@ export default function Page() {
                                 {moment(data.dateCreated).format('MMMM DD YYYY')}
                             </td>
                             <td>
-                                <Button color="primary"
+                                <Button type="button" color="primary"
                                     size="sm">
                                     <Link
                                         className="button-link"
@@ -73,30 +74,46 @@ export default function Page() {
                 }} lg={{
                     size: 12
                 }}>
-                    <Card body>
-                        <Table striped>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        #
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Description
-                                    </th>
-                                    <th>
-                                        Date Created
-                                    </th>
-                                    <th>
-                                        View
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>{renderTableRows(courses)}
-                            </tbody>
-                        </Table>
+                    <Card>
+                        <CardHeader>
+                            <Col md={{
+                                size: 1
+                            }} sm={{
+                                size: 1
+                            }} lg={{
+                                offset: 10,
+                                size: 4
+                            }}>
+
+                                <AddCourseModal />
+
+                            </Col>
+                        </CardHeader>
+                        <CardBody>
+                            <Table striped>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+                                        <th>
+                                            Date Created
+                                        </th>
+                                        <th>
+                                            View
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>{renderTableRows(courses)}
+                                </tbody>
+                            </Table>
+                        </CardBody>
                     </Card>
                 </Col>
 
