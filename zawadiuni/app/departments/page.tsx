@@ -7,6 +7,7 @@ import moment from "moment";
 import Link from "next/link";
 import { Button, Row, Col, Card, Table } from "reactstrap";
 import ViewIcon from "@/components/icons/ViewIcon";
+import { toastNotification } from "@/components/NotificationBar";
 
 export default function Page() {
     const [departments, setDepartments] = useState(Array<Batch>);
@@ -20,6 +21,8 @@ export default function Page() {
         catch (error) {
             console.log(error);
         }
+
+        toastNotification('error', "Welcome");
 
     }, []);
 

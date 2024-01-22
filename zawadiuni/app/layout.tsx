@@ -1,10 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-toastify/dist/ReactToastify.css';
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from '../components/navbar';
 import SideBar from '@/components/SideBar';
 import './globals.css';
 import { Col, Container, Row } from 'reactstrap';
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.className}>
+        <ToastContainer autoClose={4000} />
         <Container fluid>
           <Row className="justify-content-md-center main-page">
             <LeftSection />
