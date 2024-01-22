@@ -8,4 +8,6 @@ export interface DeleteModalProps {
   deleteText: string;
   deleteTitle: string;
   deleteDescription: string;
+  itemId: string;
+  itemType: string;
 }
