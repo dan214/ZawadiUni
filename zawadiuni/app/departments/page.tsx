@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import Link from "next/link";
-import { Button, Row, Col, Card, Table } from "reactstrap";
+import { Button, Row, Col, Card, Table, CardHeader, CardBody } from "reactstrap";
 import ViewIcon from "@/components/icons/ViewIcon";
-import { toastNotification } from "@/components/NotificationBar";
+import AddModal from "@/components/Modal/AddDepartmentModal";
+import AddDepartmentModal from "@/components/Modal/AddDepartmentModal";
 
 export default function Page() {
     const [departments, setDepartments] = useState(Array<Batch>);
@@ -43,7 +44,7 @@ export default function Page() {
                                 {moment(data.dateCreated).format('MMMM DD YYYY')}
                             </td>
                             <td>
-                                <Button type color="primary"
+                                <Button type="button" color="primary"
                                     size="md">
                                     <Link
                                         className="button-link"
@@ -73,30 +74,46 @@ export default function Page() {
                 }} lg={{
                     size: 12
                 }}>
-                    <Card body>
-                        <Table striped>
-                            <thead>
-                                <tr>
-                                    <th>
-                                        #
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Description
-                                    </th>
-                                    <th>
-                                        Date Created
-                                    </th>
-                                    <th>
-                                        View
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>{renderTableRows(departments)}
-                            </tbody>
-                        </Table>
+                    <Card>
+                        <CardHeader>
+                            <Col md={{
+                                size: 1
+                            }} sm={{
+                                size: 1
+                            }} lg={{
+                                offset: 10,
+                                size: 4
+                            }}>
+
+                                <AddDepartmentModal />
+
+                            </Col>
+                        </CardHeader>
+                        <CardBody>
+                            <Table striped>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            #
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Description
+                                        </th>
+                                        <th>
+                                            Date Created
+                                        </th>
+                                        <th>
+                                            View
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>{renderTableRows(departments)}
+                                </tbody>
+                            </Table>
+                        </CardBody>
                     </Card>
                 </Col>
 

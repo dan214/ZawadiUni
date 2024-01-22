@@ -11,3 +11,6 @@ export interface DeleteModalProps {
   itemId: string;
   itemType: string;
 }
+
+export interface AddModalProps {
+}

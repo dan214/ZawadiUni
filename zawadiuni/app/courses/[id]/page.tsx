@@ -1,5 +1,6 @@
 "use client"
 import { Course } from "@/app/interface";
+import DeleteModal from "@/components/Modal/DeleteModal";
 import TopCard from "@/components/TopCard";
 import DeleteIcon from "@/components/icons/DeleteIcon";
 import EditIcon from "@/components/icons/EditIcon";
@@ -58,7 +59,7 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                         }}>
                             <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit course</Button>
                             {' '}
-                            <Button className="buttons-icons" color="danger" size="md">{<DeleteIcon />}Delete course</Button>
+                            <DeleteModal itemId={params.id} itemType="course" deleteText="Delete course" deleteTitle="Delete Course" deleteDescription="Do you really want to delete this course? This action is permanent" />
                         </Col>
 
                     </Row>
