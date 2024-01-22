@@ -1,5 +1,5 @@
 import { toast, cssTransition } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 export const toastNotification = (actionType: "error" | "success", message: string) => {
     const Zoom = cssTransition({
@@ -10,17 +10,14 @@ export const toastNotification = (actionType: "error" | "success", message: stri
         case 'success':
             toast.success(message, {
                 position: "top-center",
-                transition: Zoom,
-                style: { background: '#0D8A18' },
+                autoClose: 6000
             });
             break;
         case 'error':
             toast.error(message, {
                 position: "top-center",
-                transition: Zoom,
-                style: { background: '#E72509' },
-                autoClose: 5000,
-                pauseOnHover: true
+                pauseOnHover: true,
+                autoClose: 6000
             });
             break;
         default:

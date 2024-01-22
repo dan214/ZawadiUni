@@ -22,8 +22,6 @@ export default function Page() {
             console.log(error);
         }
 
-        toastNotification('error', "Welcome");
-
     }, []);
 
     const renderTableRows = (tableData: Array<Batch>) => {
@@ -45,7 +43,7 @@ export default function Page() {
                                 {moment(data.dateCreated).format('MMMM DD YYYY')}
                             </td>
                             <td>
-                                <Button color="primary"
+                                <Button type color="primary"
                                     size="md">
                                     <Link
                                         className="button-link"
