@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={inter.className}>
-        <ToastContainer autoClose={4000} />
+        <ToastContainer />
         <Container fluid>
           <Row className="justify-content-md-center main-page">
             <LeftSection />

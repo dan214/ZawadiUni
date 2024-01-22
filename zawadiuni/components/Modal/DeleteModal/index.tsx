@@ -26,19 +26,19 @@ const DeleteModal: React.FC<DeleteModalProps> = (props) => {
         } finally {
             setLoading(false);
             setModal(false);
+            toastNotification("success", "This department has successfully been deleted");
             push('/departments');
-            toastNotification("success", "This department has been deleted");
         }
     };
 
     return (
-        <><Button className="buttons-icons" color="danger" size="md" onClick={toggle}>{<DeleteIcon />}{deleteText}</Button><Modal isOpen={modal} toggle={toggle}>
+        <><Button type value="Submit" className="buttons-icons" color="danger" size="md" onClick={toggle}>{<DeleteIcon />}{deleteText}</Button><Modal isOpen={modal} toggle={toggle}>
             <ModalHeader toggle={toggle}>{deleteTitle}</ModalHeader>
             <ModalBody>
                 {deleteDescription}
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" disabled={loading} onClick={handleDelete}>
+                <Button type color="primary" disabled={loading} onClick={handleDelete}>
                     {deleteText}
                 </Button>{' '}
                 {loading && (
@@ -49,7 +49,7 @@ const DeleteModal: React.FC<DeleteModalProps> = (props) => {
                         Loading...
                     </Spinner>
                 )}
-                <Button color="secondary" onClick={toggle}>
+                <Button type color="secondary" onClick={toggle}>
                     Cancel
                 </Button>
             </ModalFooter>
