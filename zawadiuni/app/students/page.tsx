@@ -2,8 +2,8 @@ import TopCard from "@/components/TopCard";
 
 export default function Page() {
     return (
-        <><TopCard cardTitle="Students"
-            cardSubtitle="Students"
+        <><TopCard cardTitle="Departments"
+            cardSubtitle="Departments"
             cardText="Please review the data on students here below" />
         </>
 

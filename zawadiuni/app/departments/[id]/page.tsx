@@ -1,20 +1,20 @@
 "use client"
-import { Course } from "@/app/interface";
+import { Batch } from "@/app/interface";
+import DeleteModal from "@/components/Modal/DeleteModal";
 import TopCard from "@/components/TopCard";
-import DeleteIcon from "@/components/icons/DeleteIcon";
 import EditIcon from "@/components/icons/EditIcon";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card, CardBody, CardFooter, CardHeader, CardText, CardTitle, Col, Row, Table } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardHeader, CardText, Col, Row } from "reactstrap";
 
-export default function CoursePage({ params }: { params: { id: string } }) {
-    const [course, setCourse] = useState<Course>();
+export default function DepartmentPage({ params }: { params: { id: string } }) {
+    const [department, setDepartment] = useState<Batch>();
 
     useEffect(() => {
         try {
-            axiosApi.getData(params.id, "course").then((response) => {
-                setCourse(response.data);
+            axiosApi.getData(params.id, "batch").then((response) => {
+                setDepartment(response.data);
             });
         }
         catch (error) {
@@ -25,16 +25,16 @@ export default function CoursePage({ params }: { params: { id: string } }) {
 
     return (
         <>
-            <TopCard cardTitle="Course"
-                cardSubtitle="Course"
-                cardText="Please review the courses here below" />
+            <TopCard cardTitle="Department"
+                cardSubtitle="Department"
+                cardText="Please review the department here below" />
             <Card>
                 <CardHeader>
-                    <b>{course?.courseName}</b>
+                    <b>{department?.batchName}</b>
                 </CardHeader>
                 <CardBody>
                     <CardText>
-                        {course?.description}
+                        {department?.description}
                     </CardText>
                 </CardBody>
                 <CardFooter>
@@ -46,7 +46,7 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                         }} lg={{
                             size: 4
                         }}>
-                            Date added: <b>{moment(course?.dateCreated).format('MMMM DD YYYY')}</b>
+                            Date added: <b>{moment(department?.dateCreated).format('MMMM DD YYYY')}</b>
                         </Col>
                         <Col md={{
                             size: 1
@@ -56,9 +56,9 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                             offset: 4,
                             size: 4
                         }}>
-                            <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit course</Button>
+                            <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit department</Button>
                             {' '}
-                            <Button className="buttons-icons" color="danger" size="md">{<DeleteIcon />}Delete course</Button>
+                            <DeleteModal deleteText="Delete department" deleteTitle="Delete Department" deleteDescription="Do you really want to delete this department? This action is permanent" />
                         </Col>
 
                     </Row>
