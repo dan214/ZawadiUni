@@ -6,6 +6,7 @@ import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import Link from "next/link";
 import { Button, Row, Col, Card, Table } from "reactstrap";
+import ViewIcon from "@/components/icons/ViewIcon";
 
 export default function Page() {
     const [departments, setDepartments] = useState(Array<Batch>);
@@ -42,11 +43,11 @@ export default function Page() {
                             </td>
                             <td>
                                 <Button color="primary"
-                                    size="sm">
+                                    size="md">
                                     <Link
                                         className="button-link"
                                         href={`/departments/${data.batchId}`}>
-                                        View
+                                        {<ViewIcon />} View
                                     </Link>
                                 </Button>
                             </td>
@@ -59,8 +60,8 @@ export default function Page() {
     }
 
     return (
-        <><TopCard cardTitle="Courses"
-            cardSubtitle="Courses"
+        <><TopCard cardTitle="Departments"
+            cardSubtitle="Departments"
             cardText="Please review the courses here below" />
 
             <Row className="mb-3 mt-3">

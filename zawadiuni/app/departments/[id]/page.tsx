@@ -1,7 +1,7 @@
 "use client"
-import { Batch, Course } from "@/app/interface";
+import { Batch } from "@/app/interface";
+import DeleteModal from "@/components/Modal/DeleteModal";
 import TopCard from "@/components/TopCard";
-import DeleteIcon from "@/components/icons/DeleteIcon";
 import EditIcon from "@/components/icons/EditIcon";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
@@ -58,7 +58,7 @@ export default function DepartmentPage({ params }: { params: { id: string } }) {
                         }}>
                             <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit department</Button>
                             {' '}
-                            <Button className="buttons-icons" color="danger" size="md">{<DeleteIcon />}Delete department</Button>
+                            <DeleteModal deleteText="Delete department" deleteTitle="Delete Department" deleteDescription="Do you really want to delete this department? This action is permanent" />
                         </Col>
 
                     </Row>

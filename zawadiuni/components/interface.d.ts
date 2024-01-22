@@ -3,3 +3,9 @@ export interface TopCardProps {
   cardSubtitle: string;
   cardText: string;
 }
+
+export interface DeleteModalProps {
+  deleteText: string;
+  deleteTitle: string;
+  deleteDescription: string;
+}

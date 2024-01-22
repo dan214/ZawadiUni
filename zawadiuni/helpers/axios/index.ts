@@ -3,8 +3,8 @@ import axios from "axios";
 
 class Axios {
 
-  public async getData(courseId: string, apiCall: string) {
-    const apiUrl: string = "https://localhost:7250/" + apiCall + "/" + courseId;
+  public async getData(itemId: string, apiCall: string) {
+    const apiUrl: string = "https://localhost:7250/" + apiCall + "/" + itemId;
     const response = await axios.get(apiUrl);
     const { data, status } = response;
     return { data, status };
@@ -13,6 +13,13 @@ class Axios {
   public async getAllData(apiCall: string) {
     const apiUrl: string = "https://localhost:7250/" + apiCall;
     const response = await axios.get(apiUrl);
+    const { data, status } = response;
+    return { data, status };
+  }
+
+  public async deleteData(itemId: string, apiCall: string) {
+    const apiUrl: string = "https://localhost:7250/" + apiCall + "/" + itemId;
+    const response = await axios.delete(apiUrl);
     const { data, status } = response;
     return { data, status };
   }

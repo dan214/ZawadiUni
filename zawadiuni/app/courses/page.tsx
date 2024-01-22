@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Row, Table } from "reactstrap";
 import { Course } from "../interface";
+import ViewIcon from "@/components/icons/ViewIcon";
 
 export default function Page() {
 
@@ -47,7 +48,7 @@ export default function Page() {
                                     <Link
                                         className="button-link"
                                         href={`/courses/${data.courseId}`}>
-                                        View
+                                        {<ViewIcon />}View
                                     </Link>
                                 </Button>
                             </td>
