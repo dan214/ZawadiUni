@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Spinner } from 'reactstrap';
 
 const DeleteModal: React.FC<DeleteModalProps> = (props) => {
-    const { itemId, itemType, deleteText, deleteTitle, deleteDescription } = props;
+    const { itemId, itemType, deleteText, deleteTitle, deleteDescription, redirectUrl } = props;
     const [modal, setModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const { push } = useRouter();
@@ -26,8 +26,8 @@ const DeleteModal: React.FC<DeleteModalProps> = (props) => {
         } finally {
             setLoading(false);
             setModal(false);
-            toastNotification("success", "This department has successfully been deleted");
-            push('/departments');
+            toastNotification("success", "This item has successfully been deleted");
+            push(`/${redirectUrl}`);
         }
     };
 

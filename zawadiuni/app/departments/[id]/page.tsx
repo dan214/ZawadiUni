@@ -58,7 +58,7 @@ export default function DepartmentPage({ params }: { params: { id: string } }) {
                         }}>
                             <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit department</Button>
                             {' '}
-                            <DeleteModal itemId={params.id} itemType="batch" deleteText="Delete department" deleteTitle="Delete Department" deleteDescription="Do you really want to delete this department? This action is permanent" />
+                            <DeleteModal itemId={params.id} itemType="batch" deleteText="Delete department" deleteTitle="Delete Department" deleteDescription="Do you really want to delete this department? This action is permanent" redirectUrl="departments" />
                         </Col>
 
                     </Row>

@@ -10,7 +10,13 @@ export interface DeleteModalProps {
   deleteDescription: string;
   itemId: string;
   itemType: string;
+  redirectUrl: string;
 }
 
-export interface AddModalProps {
+export interface AddCourseModalProps {
+  onAddCourse: Function;
+}
+
+export interface AddDepartmentModalProps {
+  onAddDepartment: Function;
 }

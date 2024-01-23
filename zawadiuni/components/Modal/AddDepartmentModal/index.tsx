@@ -1,10 +1,27 @@
-import { AddModalProps } from "@/components/interface";
+import { AddDepartmentModalProps } from "@/components/interface";
 import { useState } from "react";
 import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from "reactstrap";
 
-const AddDepartmentModal: React.FC<AddModalProps> = (props) => {
+const AddDepartmentModal: React.FC<AddDepartmentModalProps> = (props) => {
+
     const [modal, setModal] = useState(false);
+    const { onAddDepartment } = props;
+
+    const [batchID, setCourseID] = useState<number>();
+    const [batchName, setCourseName] = useState<string>();
+    const [description, setCourseDescription] = useState<string>();
+    const [dateCreated, setCourseDate] = useState<string>();
+
     const toggle = () => setModal(!modal);
+
+    const handleAdd = () => {
+        onAddDepartment({
+            batchID,
+            description,
+            batchName,
+            dateCreated
+        })
+    };
 
     return (
         <>
@@ -15,38 +32,50 @@ const AddDepartmentModal: React.FC<AddModalProps> = (props) => {
                     <Form>
                         <FormGroup>
                             <Label for="exampleEmail">
-                                Batch ID
+                                Department ID
                             </Label>
                             <Input
                                 id="batchId"
                                 name="batchId"
                                 type="number"
+                                value={batchID}
+                                onChange={(e) => setCourseID(parseInt(e.target.value))}
                                 required
                             />
                         </FormGroup>
                         <FormGroup>
                             <Label for="exampleText">
-                                Batch Name
+                                Department Name
                             </Label>
                             <Input
-                                id="exampleText"
-                                name="text"
+                                id="courseName"
+                                name="courseName"
+                                value={batchName}
+                                onChange={(e) => setCourseName(e.target.value)}
                             />
                         </FormGroup>
                         <FormGroup>
                             <Label for="exampleText">
-                                Batch Description
+                                Description
                             </Label>
                             <Input
-                                id="exampleText"
-                                name="text"
+                                id="courseDescription"
+                                name="courseDescription"
                                 type="textarea"
+                                value={description}
+                                onChange={(e) => setCourseDescription(e.target.value)}
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Input type="datetime-local" />
+                            <Input
+                                id="dateCreated"
+                                type="datetime-local"
+                                name="dateCreated"
+                                value={dateCreated}
+                                onChange={(e) => setCourseDate(e.target.value)}
+                            />
                         </FormGroup>
-                        <Button>
+                        <Button type="submit" onClick={handleAdd}>
                             Submit
                         </Button>
                     </Form>
