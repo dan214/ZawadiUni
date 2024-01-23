@@ -8,6 +8,7 @@ import { Button, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap"
 import { Course } from "../interface";
 import ViewIcon from "@/components/icons/ViewIcon";
 import AddCourseModal from "@/components/Modal/AddCourseModal";
+import { toastNotification } from "@/components/NotificationBar";
 
 export default function Page() {
 
@@ -24,6 +25,21 @@ export default function Page() {
         }
 
     }, []);
+
+    const handleAddCourse = async (item: { courseId: number; courseName: string, courseDescription: string, dateCreated: string }) => {
+        try {
+            const result = await axiosApi.postData('course', item);
+            const data = result.data;
+            toastNotification("success", "Successfully added course to our database")
+        } catch (error) {
+            console.error('An error occurred while adding the item', error);
+            toastNotification("error", "There wa an error trying to add the course")
+        }
+        finally {
+            toastNotification("success", "The course has successfully been added");
+        }
+    };
+
 
     const renderTableRows = (tableData: Array<Course>) => {
         return (
@@ -85,7 +101,7 @@ export default function Page() {
                                 size: 4
                             }}>
 
-                                <AddCourseModal />
+                                <AddCourseModal onAddCourse={handleAddCourse} />
 
                             </Col>
                         </CardHeader>

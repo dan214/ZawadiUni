@@ -2,12 +2,11 @@
 import { Course } from "@/app/interface";
 import DeleteModal from "@/components/Modal/DeleteModal";
 import TopCard from "@/components/TopCard";
-import DeleteIcon from "@/components/icons/DeleteIcon";
 import EditIcon from "@/components/icons/EditIcon";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Card, CardBody, CardFooter, CardHeader, CardText, CardTitle, Col, Row, Table } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, CardHeader, CardText, Col, Row } from "reactstrap";
 
 export default function CoursePage({ params }: { params: { id: string } }) {
     const [course, setCourse] = useState<Course>();
@@ -59,7 +58,13 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                         }}>
                             <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit course</Button>
                             {' '}
-                            <DeleteModal itemId={params.id} itemType="course" deleteText="Delete course" deleteTitle="Delete Course" deleteDescription="Do you really want to delete this course? This action is permanent" />
+                            <DeleteModal
+                                itemId={params.id}
+                                itemType="course"
+                                deleteText="Delete course"
+                                deleteTitle="Delete Course"
+                                deleteDescription="Do you really want to delete this course? This action is permanent"
+                                redirectUrl="courses" />
                         </Col>
 
                     </Row>

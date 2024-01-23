@@ -23,6 +23,13 @@ class Axios {
     const { data, status } = response;
     return { data, status };
   }
+
+  public async postData(apiSuffix: string, postData: object) {
+    const apiUrl: string = "https://localhost:7250/" + apiSuffix;
+    const { data, status } = await axios.post(apiUrl, postData);
+    return { data, status };
+  }
+
 }
 
 const axiosApi: Axios = new Axios();

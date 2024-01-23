@@ -76,9 +76,9 @@ export interface Batch {
 }
 
 export interface Course {
-  batch: Batch;
+  batch?: Batch;
   courseId: number;
-  courseName: string;
-  description: string;
-  dateCreated: Date;
+  courseName?: string;
+  description?: string;
+  dateCreated?: Date;
 }

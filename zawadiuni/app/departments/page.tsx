@@ -9,6 +9,7 @@ import { Button, Row, Col, Card, Table, CardHeader, CardBody } from "reactstrap"
 import ViewIcon from "@/components/icons/ViewIcon";
 import AddModal from "@/components/Modal/AddDepartmentModal";
 import AddDepartmentModal from "@/components/Modal/AddDepartmentModal";
+import { toastNotification } from "@/components/NotificationBar";
 
 export default function Page() {
     const [departments, setDepartments] = useState(Array<Batch>);
@@ -24,6 +25,20 @@ export default function Page() {
         }
 
     }, []);
+
+    const handleAddDepartment = async (item: { batchId: number; batchName: string, description: string, dateCreated: string }) => {
+        try {
+            const result = await axiosApi.postData('batch', item);
+            const data = result.data;
+            toastNotification("success", "Successfully added course to our database")
+        } catch (error) {
+            console.error('An error occurred while adding the item', error);
+            toastNotification("error", "There wa an error trying to add the course")
+        }
+        finally {
+            toastNotification("success", "The course has successfully been added");
+        }
+    };
 
     const renderTableRows = (tableData: Array<Batch>) => {
         return (
@@ -85,7 +100,7 @@ export default function Page() {
                                 size: 4
                             }}>
 
-                                <AddDepartmentModal />
+                                <AddDepartmentModal onAddDepartment={handleAddDepartment} />
 
                             </Col>
                         </CardHeader>
