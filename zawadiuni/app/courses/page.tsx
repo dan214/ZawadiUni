@@ -12,7 +12,7 @@ import { toastNotification } from "@/components/NotificationBar";
 
 export default function Page() {
 
-    const [courses, setCourses] = useState(Array<Course>);
+    const [courses, setCourses] = useState<any[]>([]);
 
     useEffect(() => {
         try {
@@ -41,10 +41,10 @@ export default function Page() {
     };
 
 
-    const renderTableRows = (tableData: Array<Course>) => {
+    const renderTableRows = () => {
         return (
             <>
-                {tableData.map((data, index) => {
+                {courses.map((data) => {
                     return (
                         <tr key={data.courseId}>
                             <th scope="row">
@@ -59,6 +59,14 @@ export default function Page() {
                             <td>
                                 {moment(data.dateCreated).format('MMMM DD YYYY')}
                             </td>
+                            {(data.batch == null)?
+                            (<td>
+                            <i>No department</i>
+                        </td>):(<td>
+                                <Link href={`/departments/${data.batch.batchId}`}>{data.batch?.batchName}</Link>
+                            </td>)
+                            }
+                            
                             <td>
                                 <Button type="button" color="primary"
                                     size="sm">
@@ -122,11 +130,14 @@ export default function Page() {
                                             Date Created
                                         </th>
                                         <th>
+                                            Department
+                                        </th>
+                                        <th>
                                             View
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody>{renderTableRows(courses)}
+                                <tbody>{renderTableRows()}
                                 </tbody>
                             </Table>
                         </CardBody>
