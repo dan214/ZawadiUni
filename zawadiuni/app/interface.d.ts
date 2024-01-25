@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { CardChartData } from "../Charts/interface";
 import moment from "moment";
+import { List } from "reactstrap";
 export interface StabilityChartsprops {
   totalTestsChart: Array<CardChartData>;
   totalInfraFailsChart: Array<CardChartData>;
@@ -73,6 +74,7 @@ export interface Batch {
   batchName: string;
   description: string;
   dateCreated: Date;
+  courses: List<Course>;
 }
 
 export interface Course {
@@ -81,4 +83,5 @@ export interface Course {
   courseName?: string;
   description?: string;
   dateCreated?: Date;
+  batchId?: number;
 }
