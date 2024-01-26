@@ -50,7 +50,9 @@ export default function Page() {
                                 {data.courseId}
                             </th>
                             <td>
-                                {data.courseName}
+                            <Link
+                                        href={`/courses/${data.courseId}`}>{data.courseName}
+                                    </Link>    
                             </td>
                             <td>
                                 {data.description}

@@ -1,26 +1,45 @@
 import { AddCourseModalProps } from "@/components/interface";
-import { useState } from "react";
+import axiosApi from "@/helpers/axios";
+import { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from "reactstrap";
 
 const AddCourseModal: React.FC<AddCourseModalProps> = (props) => {
     const [modal, setModal] = useState(false);
     const { onAddCourse } = props;
-
-    const [courseID, setCourseID] = useState<number>();
     const [courseName, setCourseName] = useState<string>();
     const [description, setCourseDescription] = useState<string>();
     const [dateCreated, setCourseDate] = useState<string>();
+    const [departmentOptions, setDepartmentOptions] = useState<any[]>([]);
+    const [selectedDepartmentId, setSelectedDepartment] = useState('');;
 
     const toggle = () => setModal(!modal);
 
     const handleAdd = () => {
         onAddCourse({
-            courseID,
             description,
             courseName,
-            dateCreated
-        })
+            dateCreated,
+            batchId:selectedDepartmentId
+        });
     };
+    
+    useEffect(() => {
+        // Fetch the list of parents when the component mounts
+        fetchDepartmentOptions();
+      }, []);
+
+    const fetchDepartmentOptions = async () => {
+        try {
+            axiosApi.getAllData("batch").then((response) => {
+                console.log("set department")
+                setDepartmentOptions(response.data);
+            })
+        } catch (error) {
+          console.error('An error occurred while fetching parent options', error);
+        }
+      };
+
+
     return (
         <>
             <Button color="primary" onClick={toggle}>Add Course</Button>
@@ -28,19 +47,6 @@ const AddCourseModal: React.FC<AddCourseModalProps> = (props) => {
                 <ModalHeader toggle={toggle}>Add Course</ModalHeader>
                 <ModalBody>
                     <Form>
-                        <FormGroup>
-                            <Label for="exampleEmail">
-                                Course ID
-                            </Label>
-                            <Input
-                                id="batchId"
-                                name="batchId"
-                                type="number"
-                                value={courseID}
-                                onChange={(e) => setCourseID(parseInt(e.target.value))}
-                                required
-                            />
-                        </FormGroup>
                         <FormGroup>
                             <Label for="exampleText">
                                 Course Name
@@ -65,10 +71,33 @@ const AddCourseModal: React.FC<AddCourseModalProps> = (props) => {
                             />
                         </FormGroup>
                         <FormGroup>
+                            <Label>
+                                Department
+                            </Label>
+                            <Input
+      id="exampleSelect"
+      name="select"
+      type="select"
+      value={selectedDepartmentId}
+      onChange={(e) => setSelectedDepartment(e.target.value)}
+    >
+            <option value="">Select Department..</option>
+            {departmentOptions.map((department) => (
+              <option key={department.batchId} value={department.batchId}>
+                {department.batchName}
+              </option>
+            ))}
+          </Input>
+                        </FormGroup>
+                        <FormGroup>
+                        <Label>
+                                Date created
+                            </Label>
                             <Input
                                 id="dateCreated"
-                                type="datetime-local"
+                                type="date"
                                 name="dateCreated"
+                                placeholder="Select date"
                                 value={dateCreated}
                                 onChange={(e) => setCourseDate(e.target.value)}
                             />
