@@ -7,7 +7,6 @@ const AddDepartmentModal: React.FC<AddDepartmentModalProps> = (props) => {
     const [modal, setModal] = useState(false);
     const { onAddDepartment } = props;
 
-    const [batchID, setCourseID] = useState<number>();
     const [batchName, setCourseName] = useState<string>();
     const [description, setCourseDescription] = useState<string>();
     const [dateCreated, setCourseDate] = useState<string>();
@@ -16,7 +15,6 @@ const AddDepartmentModal: React.FC<AddDepartmentModalProps> = (props) => {
 
     const handleAdd = () => {
         onAddDepartment({
-            batchID,
             description,
             batchName,
             dateCreated
@@ -30,19 +28,6 @@ const AddDepartmentModal: React.FC<AddDepartmentModalProps> = (props) => {
                 <ModalHeader toggle={toggle}>Add Department</ModalHeader>
                 <ModalBody>
                     <Form>
-                        <FormGroup>
-                            <Label for="exampleEmail">
-                                Department ID
-                            </Label>
-                            <Input
-                                id="batchId"
-                                name="batchId"
-                                type="number"
-                                value={batchID}
-                                onChange={(e) => setCourseID(parseInt(e.target.value))}
-                                required
-                            />
-                        </FormGroup>
                         <FormGroup>
                             <Label for="exampleText">
                                 Department Name
