@@ -5,6 +5,7 @@ import TopCard from "@/components/TopCard";
 import EditIcon from "@/components/icons/EditIcon";
 import axiosApi from "@/helpers/axios";
 import moment from "moment";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button, Card, CardBody, CardFooter, CardHeader, CardText, Col, Row } from "reactstrap";
 
@@ -40,20 +41,32 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                 <CardFooter>
                     <Row>
                         <Col md={{
-                            size: 4
+                            size: 3
                         }} sm={{
-                            size: 4
+                            size: 3
                         }} lg={{
-                            size: 4
+                            size: 3
                         }}>
                             Date added: <b>{moment(course?.dateCreated).format('MMMM DD YYYY')}</b>
                         </Col>
+
+                        <Col md={{
+                            size: 3
+                        }} sm={{
+                            size: 3
+                        }} lg={{
+                            size: 3
+                        }}>
+                            
+                            Department: <Link href={`/departments/${course?.batch?.batchId}`}><b>{course?.batch?.batchName}</b></Link>
+                        </Col>
+
                         <Col md={{
                             size: 1
                         }} sm={{
                             size: 1
                         }} lg={{
-                            offset: 4,
+                            offset: 2,
                             size: 4
                         }}>
                             <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit course</Button>

@@ -5,7 +5,6 @@ import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button, Card, CardBody, CardHeader, Col, Row, Table } from "reactstrap";
-import { Course } from "../interface";
 import ViewIcon from "@/components/icons/ViewIcon";
 import AddCourseModal from "@/components/Modal/AddCourseModal";
 import { toastNotification } from "@/components/NotificationBar";
@@ -68,12 +67,11 @@ export default function Page() {
                             }
                             
                             <td>
-                                <Button type="button" color="primary"
-                                    size="sm">
+                                <Button type="submit" color="primary"
+                                    size="md">
                                     <Link
                                         className="button-link"
-                                        href={`/courses/${data.courseId}`}>
-                                        {<ViewIcon />}View
+                                        href={`/courses/${data.courseId}`}>View
                                     </Link>
                                 </Button>
                             </td>
