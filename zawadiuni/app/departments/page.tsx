@@ -63,8 +63,7 @@ export default function Page() {
                                     size="md">
                                     <Link
                                         className="button-link"
-                                        href={`/departments/${data.batchId}`}>
-                                        {<ViewIcon />} View
+                                        href={`/departments/${data.batchId}`}>View
                                     </Link>
                                 </Button>
                             </td>
