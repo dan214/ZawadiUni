@@ -30,6 +30,12 @@ class Axios {
     return { data, status };
   }
 
+  public async putData(apiSuffix: string,itemId:string, putData: object) {
+    const apiUrl: string = "https://localhost:7250/" + apiSuffix + "/" + itemId;
+    const { data, status } = await axios.put(apiUrl, putData);
+    return { data, status };
+  }
+
 }
 
 const axiosApi: Axios = new Axios();

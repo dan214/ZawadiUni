@@ -49,8 +49,12 @@ export default function Page() {
                             <th scope="row">
                                 {data.batchId}
                             </th>
+                            
                             <td>
-                                {data.batchName}
+                            <Link
+                                        href={`/departments/${data.batchId}`}>{data.batchName}
+                                    </Link>
+                                
                             </td>
                             <td>
                                 {data.description}

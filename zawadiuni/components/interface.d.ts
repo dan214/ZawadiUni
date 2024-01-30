@@ -1,3 +1,5 @@
+import { Course } from "@/app/interface";
+
 export interface TopCardProps {
   cardTitle: string;
   cardSubtitle: string;
@@ -15,6 +17,16 @@ export interface DeleteModalProps {
 
 export interface AddCourseModalProps {
   onAddCourse: Function;
+}
+
+export interface EditCourseModalProps {
+  onEditCourse: Function;
+  course: any;
+}
+
+export interface EditDepartmentModalProps {
+  onEditCourse: Function;
+  course: Batch;
 }
 
 export interface AddDepartmentModalProps {
