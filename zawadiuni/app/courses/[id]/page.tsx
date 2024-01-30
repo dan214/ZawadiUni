@@ -1,6 +1,8 @@
 "use client"
 import { Course } from "@/app/interface";
 import DeleteModal from "@/components/Modal/DeleteModal";
+import EditCourseModal from "@/components/Modal/EditCourseModal";
+import { toastNotification } from "@/components/NotificationBar";
 import TopCard from "@/components/TopCard";
 import EditIcon from "@/components/icons/EditIcon";
 import axiosApi from "@/helpers/axios";
@@ -22,7 +24,22 @@ export default function CoursePage({ params }: { params: { id: string } }) {
             console.log(error);
         }
 
-    }, []);
+    }, [params.id]);
+
+    const handleEditCourse = async (course: Course) => {
+        try {
+            console.log("edited course, submitting");
+            console.log(course);
+            const result = await axiosApi.putData('course',course.courseId.toString(), course);
+            toastNotification("success", "Successfully added course to our database")
+        } catch (error) {
+            console.error('An error occurred while adding the item', error);
+            toastNotification("error", "There wa an error trying to add the course")
+        }
+        finally {
+            toastNotification("success", "The course has successfully been added");
+        }
+    };
 
     return (
         <>
@@ -69,7 +86,8 @@ export default function CoursePage({ params }: { params: { id: string } }) {
                             offset: 2,
                             size: 4
                         }}>
-                            <Button className="buttons-icons" color="primary" size="md">{<EditIcon />}Edit course</Button>
+                             <EditCourseModal onEditCourse={handleEditCourse} course={course} />
+                            
                             {' '}
                             <DeleteModal
                                 itemId={params.id}
