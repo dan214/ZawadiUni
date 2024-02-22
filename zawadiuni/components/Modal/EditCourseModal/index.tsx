@@ -9,23 +9,20 @@ const EditCourseModal: React.FC<EditCourseModalProps> = (props) => {
     const [modal, setModal] = useState(false);
     const { onEditCourse, course } = props;
     const [editedCourse, setEditedCourse] = useState<Course>(course);
-    const [courseName, setCourseName] = useState<string>();
-    const [description, setCourseDescription] = useState<string>();
-    const [dateCreated, setCourseDate] = useState<string>();
     const [departmentOptions, setDepartmentOptions] = useState<any[]>([]);
-    const [selectedDepartmentId, setSelectedDepartment] = useState<number | string>(course?.batchId);;
+    const [selectedDepartmentId] = useState<number | string>(course?.batchId);;
 
     const toggle = () => setModal(!modal);
 
     const handleEdit = () => {
         onEditCourse(editedCourse);
     };
-    
+
     useEffect(() => {
         // Fetch the list of parents when the component mounts
         setEditedCourse(course);
         fetchDepartmentOptions();
-      }, [course]);
+    }, [course]);
 
     const fetchDepartmentOptions = async () => {
         try {
@@ -34,14 +31,14 @@ const EditCourseModal: React.FC<EditCourseModalProps> = (props) => {
                 setDepartmentOptions(response.data);
             })
         } catch (error) {
-          console.error('An error occurred while fetching parent options', error);
+            console.error('An error occurred while fetching parent options', error);
         }
-      };
+    };
 
 
     return (
         <>
-        <Button className="buttons-icons" color="primary" size="md" onClick={toggle}>{<EditIcon />}Edit course</Button>
+            <Button className="buttons-icons" color="primary" size="md" onClick={toggle}>{<EditIcon />}Edit course</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Edit Course</ModalHeader>
                 <ModalBody>
@@ -54,7 +51,7 @@ const EditCourseModal: React.FC<EditCourseModalProps> = (props) => {
                                 id="courseName"
                                 name="courseName"
                                 value={editedCourse?.courseName}
-                                onChange={(e) => setEditedCourse({...editedCourse, courseName: e.target.value})}
+                                onChange={(e) => setEditedCourse({ ...editedCourse, courseName: e.target.value })}
                             />
                         </FormGroup>
                         <FormGroup>
@@ -66,7 +63,7 @@ const EditCourseModal: React.FC<EditCourseModalProps> = (props) => {
                                 name="courseDescription"
                                 type="textarea"
                                 value={editedCourse?.description}
-                                onChange={(e) => setEditedCourse({...editedCourse, description: e.target.value})}
+                                onChange={(e) => setEditedCourse({ ...editedCourse, description: e.target.value })}
                             />
                         </FormGroup>
                         <FormGroup>
@@ -74,22 +71,22 @@ const EditCourseModal: React.FC<EditCourseModalProps> = (props) => {
                                 Department
                             </Label>
                             <Input
-      id="exampleSelect"
-      name="select"
-      type="select"
-      value={selectedDepartmentId}
-      onChange={(e) => setEditedCourse({...editedCourse, batchId: parseInt(e.target.value,10)})}
-    >
-            <option value="">Select Department..</option>
-            {departmentOptions.map((department) => (
-              <option key={department.batchId} value={department.batchId}>
-                {department.batchName}
-              </option>
-            ))}
-          </Input>
+                                id="exampleSelect"
+                                name="select"
+                                type="select"
+                                value={selectedDepartmentId}
+                                onChange={(e) => setEditedCourse({ ...editedCourse, batchId: parseInt(e.target.value, 10) })}
+                            >
+                                <option value="">Select Department..</option>
+                                {departmentOptions.map((department) => (
+                                    <option key={department.batchId} value={department.batchId}>
+                                        {department.batchName}
+                                    </option>
+                                ))}
+                            </Input>
                         </FormGroup>
                         <FormGroup>
-                        <Label>
+                            <Label>
                                 Date created
                             </Label>
                             <Input
@@ -98,7 +95,7 @@ const EditCourseModal: React.FC<EditCourseModalProps> = (props) => {
                                 name="dateCreated"
                                 placeholder="Select date"
                                 value={editedCourse?.dateCreated}
-                                onChange={(e) => setEditedCourse({...editedCourse, dateCreated: e.target.value})}
+                                onChange={(e) => setEditedCourse({ ...editedCourse, dateCreated: e.target.value })}
                             />
                         </FormGroup>
                         <Button type="submit" onClick={handleEdit}>
